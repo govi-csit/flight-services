@@ -7,7 +7,7 @@ A RESTful backend API built with **Django REST Framework** for managing flight r
 - **Python 3.10+**
 - **Django 3.2** - Web framework
 - **Django REST Framework** - RESTful API toolkit
-- **MySQL** - Database (SQLite supported for testing)
+- **PostgreSQL** - Database (SQLite supported for testing)
 - **Token Authentication** - DRF token-based auth
 
 ## Project Structure
@@ -28,7 +28,7 @@ flight-services/
 ├── manage.py                   # Django CLI utility
 ├── requirements.txt            # Python dependencies
 ├── Dockerfile                  # Docker image definition
-├── docker-compose.yml          # Multi-container setup (app + MySQL)
+├── docker-compose.yml          # Multi-container setup (app + PostgreSQL)
 └── .github/workflows/ci.yml   # GitHub Actions CI pipeline
 ```
 
@@ -105,7 +105,7 @@ curl -X POST http://localhost:8000/flightServices/saveReservation/ \
 
 ### Prerequisites
 - Python 3.10+
-- MySQL Server
+- PostgreSQL Server
 - pip
 
 ### Steps
@@ -128,11 +128,11 @@ curl -X POST http://localhost:8000/flightServices/saveReservation/ \
    pip install -r requirements.txt
    ```
 
-4. **Set up MySQL database**
+4. **Set up PostgreSQL database**
    ```sql
    CREATE DATABASE flightdb;
    ```
-   Update database credentials in `flightServices/settings.py` if needed (default: `root`/`root`).
+   Update database credentials in `flightServices/settings.py` if needed (default: `postgres`/`postgres`).
 
 5. **Run database migrations**
    ```bash
@@ -156,14 +156,14 @@ curl -X POST http://localhost:8000/flightServices/saveReservation/ \
 ```bash
 docker-compose up --build
 ```
-This starts both the Django app and a MySQL database. The API will be available at `http://localhost:8000/`.
+This starts both the Django app and a PostgreSQL database. The API will be available at `http://localhost:8000/`.
 
 ### Using Docker only
 ```bash
 docker build -t flight-services .
 docker run -p 8000:8000 flight-services
 ```
-> Note: When running without Docker Compose, you need to provide your own MySQL instance and configure the connection via environment variables (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`).
+> Note: When running without Docker Compose, you need to provide your own PostgreSQL instance and configure the connection via environment variables (`DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`).
 
 ## Running Tests
 
@@ -182,7 +182,7 @@ python manage.py test -v 2
 python manage.py test flightApp.tests.FlightModelTest
 ```
 
-Tests use an in-memory **SQLite** database by default (configured automatically for the test environment), so MySQL is not required to run the test suite.
+Tests use an in-memory **SQLite** database by default (configured automatically for the test environment), so PostgreSQL is not required to run the test suite.
 
 ## CI/CD
 
