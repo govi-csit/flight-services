@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'flightApp',
 ]
 
-RESTE_FRAMEWORK = {
+REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES' : [ 'rest_framework.authentication.TokenAuthentication' ],
 }
 
@@ -85,9 +85,11 @@ WSGI_APPLICATION = 'flightServices.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'flightdb',
-        'USER' : 'root',
-        'PASSWORD' : 'root'
+        'NAME': os.environ.get('DB_NAME', 'flightdb'),
+        'USER': os.environ.get('DB_USER', 'root'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'root'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '3306'),
     }
 }
 

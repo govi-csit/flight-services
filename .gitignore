@@ -1,0 +1,73 @@
+# Python virtual environment
+venv/
+.env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VSCode settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# PyCharm / JetBrains
+.idea/
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Logs
+*.log
+
+# Environment variables file
+.env.local
+.env.prod
+.env.dev
+
+# pytest cache
+.pytest_cache/
+
+# mypy cache
+.mypy_cache/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+
+# Uvicorn/Starlette temporary files
+*.sqlite3
+
+# Editor backup files
+*~
+
+# Ignore jenkins files
+jenkins.sh
+Jenkinsfile
+Jenkinsfile_backup
